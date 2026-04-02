@@ -167,7 +167,7 @@ def create_widgets():
         ),
 
         "submit": pn.widgets.Button(
-            name="Submit Application",
+            name="Analyze",
             button_type="primary"
         )
     }

@@ -9,14 +9,14 @@ from bokeh.models import ColumnDataSource
 from bokeh.palettes import Category20c
 from bokeh.plotting import figure
 from bokeh.models import HoverTool
-from dashboard.charts import years_emmployed_vs_credibility_line_chart, loan_duration_vs_credibility_line_chart, demographic_dashboard, creadibility_vs_loan_duration
+
+from dashboard.charts import *
 
 hv.extension('bokeh')
 
 def create_home(data):
     no_of_credible = data[data['Creditability'] == 1]['Creditability'].sum()
     average_credit_amount = data['Credit.Amount'].mean()
-    average_clients_age = data['Age..years.'].mean()
     percentage_of_employed_clients = (data[data['Occupation'] == 1]['Occupation'].sum() / data['Occupation'].sum()) * 100
 
     home_content = pn.Column(
@@ -39,14 +39,6 @@ def create_home(data):
                 margin=(3, 3)
             ),
             pn.Card(
-                pn.pane.HTML(f""" <h4 style="text-align: center">Average Client's Age</h4> 
-                                <h1 style="text-align: center">{round(average_clients_age)}</h1> """),
-                collapsible=False,
-                hide_header=True,
-                styles={'background': 'WhiteSmoke'},
-                margin=(3, 3)
-            ),
-            pn.Card(
                 pn.pane.HTML(f""" <h4 style="text-align: center">Percentage of Unemployed Clients</h4> 
                                 <h1 style="text-align: center">{round(percentage_of_employed_clients)}%</h1> """),
                 collapsible=False,
@@ -59,21 +51,40 @@ def create_home(data):
             loan_duration_vs_credibility_line_chart(data),
         ),
         pn.Row(
-            # creadibility_vs_loan_duration(data),
+            account_balance_risk_bar_chart(data),
             years_emmployed_vs_credibility_line_chart(data),
+        ),
+    )
+    return home_content
+
+def create_demographics(data):
+    average_clients_age = data['Age..years.'].mean()
+
+    demographic_dashboard_content = pn.Column(
+        "<h1>Client Demographics</h1>",
+        pn.Row(
+            pn.Card(
+                pn.pane.HTML(f""" <h4 style="text-align: center">Average Client's Age</h4> 
+                                <h1 style="text-align: center">{round(average_clients_age)}</h1> """),
+                collapsible=False,
+                hide_header=True,
+                styles={'background': 'WhiteSmoke'},
+                margin=(3, 3)
+            ),
+        ),
+        pn.Row(
             demographic_dashboard(data),
+            sex_marital_distribution_donut(data),
         ),
 
 
     )
-    return home_content
+    return demographic_dashboard_content
 
 
 def create_form(widgets, remarks, confidence):
-    # Separate submit button so we can place it at the bottom
     submit_btn = widgets.pop("submit")
 
-    # Convert widgets (excluding submit) into a list
     fields = list(widgets.values())
 
     grid = pn.Card(

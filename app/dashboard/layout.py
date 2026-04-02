@@ -1,14 +1,12 @@
 import panel as pn
 
-def create_layout(home, form):
+def create_layout(home, form, demographics):
 
     BG = "#f9fafb"
     CARD = "#ffffff"
 
-    logo = pn.pane.Image('./img/logo.jpg', width=90)
-
     header = pn.Row(
-        pn.pane.Image('./img/logo.jpg', width=90),
+        pn.pane.Image('./img/logo.jpg', width=120),
         sizing_mode="stretch_width",
         height=100,
         styles={
@@ -22,6 +20,7 @@ def create_layout(home, form):
 
     tabs = pn.Tabs(
         ("Home", home),
+        ("Demographics", demographics),
         ("Risk Analyzer", form),
         dynamic=True,
         tabs_location="above",
