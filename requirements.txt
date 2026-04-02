@@ -1,0 +1,9 @@
+panel
+numpy
+seaborn
+streamlit
+pandas
+holoviews
+matplotlib
+bokeh
+scikit-learn
