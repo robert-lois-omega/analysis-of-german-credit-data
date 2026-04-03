@@ -27,7 +27,7 @@ def create_home(data):
                                 <h1 style="text-align: center">{no_of_credible}</h1> """),
                 collapsible=False,
                 hide_header=True,
-                styles={'background': 'WhiteSmoke'},
+                styles={'background': 'white'},
                 margin=(3, 3)
             ),
             pn.Card(
@@ -35,7 +35,7 @@ def create_home(data):
                                 <h1 style="text-align: center">DM {round(average_credit_amount, 2)}</h1> """),
                 collapsible=False,
                 hide_header=True,
-                styles={'background': 'WhiteSmoke'},
+                styles={'background': 'white'},
                 margin=(3, 3)
             ),
             pn.Card(
@@ -43,7 +43,7 @@ def create_home(data):
                                 <h1 style="text-align: center">{round(percentage_of_employed_clients)}%</h1> """),
                 collapsible=False,
                 hide_header=True,
-                styles={'background': 'WhiteSmoke'},
+                styles={'background': 'white'},
                 margin=(3, 3)
             )
         ),
@@ -68,7 +68,7 @@ def create_demographics(data):
                                 <h1 style="text-align: center">{round(average_clients_age)}</h1> """),
                 collapsible=False,
                 hide_header=True,
-                styles={'background': 'WhiteSmoke'},
+                styles={'background': 'white'},
                 margin=(3, 3)
             ),
         ),
@@ -102,7 +102,8 @@ def create_form(widgets, remarks, confidence):
         "border-radius": "12px",
         "box-shadow": "0 4px 12px rgba(0,0,0,0.08)",
         "padding": "20px",
-        "margin": "5px"
+        "margin": "5px",
+        "background": "white"
     },
     collapsible=False,
     hide_header=True,

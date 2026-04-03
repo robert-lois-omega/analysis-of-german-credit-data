@@ -2,8 +2,8 @@ import panel as pn
 
 def create_layout(home, form, demographics):
 
-    BG = "#f9fafb"
-    CARD = "#ffffff"
+    BG = "#ffffff"
+    CARD = "#f5dddd"
 
     header = pn.Row(
         pn.pane.Image('./img/logo.jpg', width=120),
@@ -40,7 +40,8 @@ def create_layout(home, form, demographics):
             styles={
                 "border-radius": "12px",
                 "box-shadow": "0 4px 12px rgba(0,0,0,0.08)",
-                "padding": "10px"
+                "padding": "10px",
+                'background': "#ffffff"
             },
             collapsible=False,
             sizing_mode="scale_both",

@@ -69,7 +69,8 @@ def years_emmployed_vs_credibility_line_chart(data):
                 "border-radius": "12px",
                 "box-shadow": "0 4px 12px rgba(0,0,0,0.08)",
                 "padding": "10px",
-                "margin": "5px"
+                "margin": "5px",
+                'background': 'white'
             },
             collapsible=False,
             hide_header=True,
@@ -91,15 +92,15 @@ def loan_duration_vs_credibility_line_chart(data):
     x_factors = grouped["Duration.of.Credit..month."].tolist()
 
     if len(x_factors) == 0:
-        return pn.pane.HTML("<b>No data available for Employment Duration</b>")
+        return pn.pane.HTML("<b>No data available for Loan Duration</b>")
 
     source = ColumnDataSource(grouped)
 
     p = figure(
         x_range=x_factors,
-        width=1300,
         height=300,
-        tools="pan,wheel_zoom,reset"
+        tools="pan,wheel_zoom,reset",
+        sizing_mode="stretch_width"
     )
 
     p.line(
@@ -115,6 +116,8 @@ def loan_duration_vs_credibility_line_chart(data):
         source=source,
         size=8
     )
+
+    p.xaxis.major_label_orientation = 1
 
     hover = HoverTool(
         tooltips=[
@@ -132,17 +135,19 @@ def loan_duration_vs_credibility_line_chart(data):
     return pn.Card(
         pn.Column(
             pn.pane.HTML("<h2 style='text-align:center;'>Loan Duration VS Credibility</h2>"),
-            p
+            p,
+            sizing_mode="stretch_width"
         ),
-            styles={
-                "border-radius": "12px",
-                "box-shadow": "0 4px 12px rgba(0,0,0,0.08)",
-                "padding": "10px",
-                "margin": "5px"
-            },
-            collapsible=False,
-            hide_header=True,
-            sizing_mode="stretch_width",
+        styles={
+            "border-radius": "12px",
+            "box-shadow": "0 4px 12px rgba(0,0,0,0.08)",
+            "padding": "10px",
+            "margin": "5px",
+            "background": "white"
+        },
+        collapsible=False,
+        hide_header=True,
+        sizing_mode="stretch_width",
     )
 
 def account_balance_risk_bar_chart(df: pd.DataFrame):
@@ -182,7 +187,7 @@ def account_balance_risk_bar_chart(df: pd.DataFrame):
         stacked=True,
         width=650,
         height=300,
-        cmap=["#4F94A0", "#2CBBD4"],
+        cmap=["#1109818B", "#6CE0FDB5"],
         legend_position="top",
         tools=["hover"],
         xlabel="Account Balance",
@@ -198,7 +203,8 @@ def account_balance_risk_bar_chart(df: pd.DataFrame):
             "border-radius": "12px",
             "box-shadow": "0 4px 12px rgba(0,0,0,0.08)",
             "padding": "10px",
-            "margin": "5px"
+            "margin": "5px",
+            'background': 'white'
         },
         collapsible=False,
         hide_header=True,
@@ -249,7 +255,8 @@ def demographic_dashboard(df):
                 "border-radius": "12px",
                 "box-shadow": "0 4px 12px rgba(0,0,0,0.08)",
                 "padding": "10px",
-                "margin": "5px"
+                "margin": "5px",
+                'background': 'white'
             },
             collapsible=False,
             hide_header=True,
@@ -308,7 +315,8 @@ def sex_marital_distribution_donut(df: pd.DataFrame):
             "border-radius": "12px",
             "box-shadow": "0 4px 12px rgba(0,0,0,0.08)",
             "padding": "10px",
-            "margin": "5px"
+            "margin": "5px",
+            'background': 'white'
         },
         collapsible=False,
         hide_header=True,
@@ -354,7 +362,8 @@ def creadibility_vs_loan_duration(df: pd.DataFrame):
                 "border-radius": "12px",
                 "box-shadow": "0 4px 12px rgba(0,0,0,0.08)",
                 "padding": "10px",
-                "margin": "5px"
+                "margin": "5px",
+                'background': 'white'
             },
         collapsible=False,
         hide_header=True,

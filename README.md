@@ -38,5 +38,9 @@ pip install -r requirements.txt
 ```
 3. Run the command
 ```
+cd app
 python main.py
 ```
+
+ ## Project Overview
+<img src="./img/over_view.jpg" alt="overview" width="1000" height="500">
